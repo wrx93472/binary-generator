@@ -1,0 +1,8 @@
+{
+  "class_name": "SensorData",
+  "fields": [
+    { "name": "id", "type": "int32" },
+    { "name": "value", "type": "float" },
+    { "name": "timestamp", "type": "int64" }
+  ]
+}

@@ -1,0 +1,17 @@
+# Szablon (uproszczony)
+import struct
+
+class {{ class_name }}:
+    def __init__(self, {{ fields | map(attribute='name') | join(', ') }}):
+        {% for field in fields %}
+        self.{{ field.name }} = {{ field.name }}
+        {% endfor %}
+
+    def serialize(self):
+        # Format: i = int32, f = float, q = int64
+        return struct.pack('ifq', self.id, self.value, self.timestamp)
+
+    @staticmethod
+    def deserialize(data):
+        unpacked = struct.unpack('ifq', data)
+        return {{ class_name }}(*unpacked)
